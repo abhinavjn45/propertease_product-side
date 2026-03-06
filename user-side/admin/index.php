@@ -234,6 +234,11 @@
                 if (isset($_GET['page']) && $_GET['page'] == 'emails-management') {
                     require_once './assets/pages/emails/emails-management/index.php';
                 }
+
+                // Send Report Page
+                if (isset($_GET['page']) && $_GET['page'] == 'send-report') {
+                    require_once './assets/pages/emails/send-report/index.php';
+                }
             ?>
             
           </div>

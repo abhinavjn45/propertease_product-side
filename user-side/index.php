@@ -47,8 +47,8 @@
             </header>
 
             <!-- Hero Section -->
-            <section id="hero" class="hero-section" aria-labelledby="hero-heading" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-              url('<?php echo get_hero_section_data('background_image'); ?>') center/cover no-repeat;">
+            <section id="hero" class="hero-section" aria-labelledby="hero-heading" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+              url('https://www.avaarchitects.in/images/Residential/mahesh-housing-society/1.jpg') center/cover no-repeat;">
                 <div class="hero-inner">
                     <div class="hero-copy">
                         <div class="hero-badges">

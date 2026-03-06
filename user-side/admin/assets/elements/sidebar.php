@@ -4,9 +4,9 @@
     </button>
     <div>
         <a href="index.html" class="sidebar-logo">
-            <img src="<?= get_site_option('site_url') ?>assets/images/logos/<?= get_site_option('logo') ?>" alt="<?= get_site_option('site_title') ?> Logo" class="light-logo">
-            <img src="<?= get_site_option('site_url') ?>assets/images/logos/<?= get_site_option('light_logo') ?>" alt="<?= get_site_option('site_title') ?> Light Logo" class="dark-logo">
-            <img src="<?= get_site_option('site_url') ?>assets/images/logos/<?= get_site_option('logo_icon') ?>" alt="" class="logo-icon">
+            <img src="<?= get_site_option('site_url') ?>user-side/assets/images/logos/<?= get_site_option('logo') ?>" alt="<?= get_site_option('site_title') ?> Logo" class="light-logo">
+            <img src="<?= get_site_option('site_url') ?>user-side/assets/images/logos/<?= get_site_option('light_logo') ?>" alt="<?= get_site_option('site_title') ?> Light Logo" class="dark-logo">
+            <img src="<?= get_site_option('site_url') ?>user-side/assets/images/logos/<?= get_site_option('logo_icon') ?>" alt="" class="logo-icon">
         </a>
     </div>
     <div class="sidebar-menu-area">
@@ -154,6 +154,13 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="<?= get_site_option('dashboard_url') ?>?page=send-report">
+                    <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+                    <span>Send Report</span>
+                </a>
+            </li>
+
 
             <li class="dropdown">
             <a href="javascript:void(0)">
