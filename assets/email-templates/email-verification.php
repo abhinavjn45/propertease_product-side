@@ -33,7 +33,7 @@
                     <table style='width: 100%; max-width: 600px;' cellpadding='0' cellspacing='0' role='presentation'>
                         <tr>
                             <td align='center' style='padding-bottom: 30px;'>
-                                <img src='{site_url}assets/img/logo/{site_logo}' alt='{site_title} Logo' width='160' style='border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;'>
+                                <img src='https://raw.githubusercontent.com/abhinavjn45/propertease_product-side/main/assets/img/logo/theme-logo-2.svg' alt='{site_title} Logo' width='160' style='border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;'>
                             </td>
                         </tr>
                     </table>

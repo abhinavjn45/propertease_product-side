@@ -100,4 +100,16 @@ function get_user_by_email($email) {
 
     return $res->fetch_assoc();
 }
+function get_user_by_unique_id($unique_id) {
+    global $con;
+    $stmt = $con->prepare("SELECT user_fullname, user_email, user_phone_number, user_designation, user_role, user_status FROM users WHERE user_unique_id = ? LIMIT 1");
+    if (!$stmt) return null;
+    
+    $stmt->bind_param("s", $unique_id);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    $stmt->close();
+
+    return $res->fetch_assoc();
+}
 ?>

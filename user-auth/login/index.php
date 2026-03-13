@@ -1,6 +1,12 @@
 <?php 
     require_once('../../assets/includes/config/config.php');
     require_once ('../../assets/includes/functions/utility/element_fetcher.php');
+
+    // Redirect if already logged in
+    if (isset($_SESSION['user_unique_id'])) {
+        header("Location: " . get_site_option('site_url') . "dashboard/");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
