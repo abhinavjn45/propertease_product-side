@@ -1,3 +1,6 @@
+<?php
+    require_once ('../../assets/includes/config/config.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <!--<< Header Area >>-->
@@ -8,205 +11,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Gramentheme">
-    <meta name="description" content="Propert-Ease - Page Not Found">
+    <meta name="description" content="Propert-Ease - Internal Server Error">
     <!-- ======== Page title ============ -->
-    <title>404 - Propert-Ease - Residential Society Governance SaaS</title>
+    <title>500 - Propert-Ease - Residential Society Governance SaaS</title>
     <!--<< Favcion >>-->
-    <link rel="shortcut icon" href="assets/img/favicon.svg">
+    <link rel="shortcut icon" href="../../assets/img/favicon.svg">
     <!--<< Bootstrap min.css >>-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!--<< All Min Css >>-->
-    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/all.min.css">
     <!--<< Animate.css >>-->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="../../assets/css/animate.css">
     <!--<< Magnific Popup.css >>-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../../assets/css/magnific-popup.css">
     <!--<< MeanMenu.css >>-->
-    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="../../assets/css/meanmenu.css">
     <!--<< Swiper Bundle.css >>-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
     <!--<< Nice Select.css >>-->
-    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="../../assets/css/nice-select.css">
     <!--<< Main.css >>-->
-    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="../../assets/css/flaticon.css">
     <!--<< Main.css >>-->
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
     <!--<< Chatbot >>-->
-    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="../../assets/css/chatbot.css">
 </head>
 
 <body>
 
     <!-- Preloader -->
-    <div class="preloader"></div>
+    <?php
+        require_once ('../../assets/includes/elements/preloader.php');
+    ?>
 
     <!-- GT Back To Top Start -->
-    <button id="gt-back-top" class="gt-back-to-top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
+    <?php
+        require_once ('../../assets/includes/elements/back-to-top.php');
+    ?>
 
     <!-- GT MouseCursor Start -->
-    <div class="mouseCursor cursor-outer"></div>
-    <div class="mouseCursor cursor-inner"></div>
+    <?php
+        require_once ('../../assets/includes/elements/mouse-cursor.php');
+    ?>
 
     <!-- Offcanvas Area Start -->
-    <div class="fix-area">
-        <div class="offcanvas__info style-3">
-            <div class="offcanvas__wrapper">
-                <div class="offcanvas__content">
-                    <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
-                        <div class="offcanvas__logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo/theme-logo-2.svg" alt="logo-img">
-                            </a>
-                        </div>
-                        <div class="offcanvas__close">
-                            <button>
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <p class="text d-none d-xl-block">
-                        Nullam dignissim, ante scelerisque the is euismod fermentum odio sem semper the is erat, a
-                        feugiat leo urna eget eros. Duis Aenean a imperdiet risus.
-                    </p>
-                    <div class="mobile-menu style-2 fix mb-3"></div>
-                    <div class="offcanvas__contact pt-5">
-                        <a href="contact.html" class="gt-theme-btn">
-                            get free trial
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="offcanvas__overlay"></div>
+    <?php 
+        require_once ('../../assets/includes/elements/offcanvas.php');
+    ?>
 
     <!-- Header Section Start -->
-    <div class="header-top-3">
-        <div class="container">
-            <p>
-                All with One CRM Platform <a href="contact.html">download app</a>
-            </p>
-        </div>
-    </div>
-    <header id="header-sticky" class="header-3">
-        <div class="container">
-            <div class="mega-menu-wrapper">
-                <div class="header-main">
-                    <div class="logo">
-                        <a href="index.html" class="header-logo">
-                            <img src="assets/img/logo/theme-logo-2.svg" alt="logo-img">
-                        </a>
-                    </div>
-                    <div class="mean__menu-wrapper">
-                        <div class="main-menu">
-                            <nav id="mobile-menu">
-                                <ul>
+    <?php 
+        require_once ('../../assets/includes/elements/topbar.php');
 
-                                    <li class="has-dropdown active">
-                                        <a href="index.html" class="border-none">
-                                            Home
-                                        </a>
-                                        <ul class="submenu">
-                                            <li><a href="index.html">Propert-Ease Home</a></li>
-                                            <li><a href="index-2.html">App landing </a></li>
-                                            <li><a href="index-3.html">AI Content Writer</a></li>
-                                            <li><a href="index-4.html">Payment getway</a></li>
-                                            <li><a href="index-5.html">SEO Agency</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">about us</a>
-                                    </li>
-                                    <li>
-                                        <a href="service-details.html">
-                                            services
-                                        </a>
-                                        <ul class="submenu">
-                                            <li><a href="service.html">Our service</a></li>
-                                            <li><a href="service-details.html">service Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-dropdown">
-                                        <a href="news-details.html">
-                                            Pages
-                                        </a>
-                                        <ul class="submenu">
-                                            <li class="has-dropdown">
-                                                <a href="team-details.html">
-                                                    Our Team
-                                                    <i class="fas fa-angle-right"></i>
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="team.html">Our Team</a></li>
-                                                    <li><a href="team-details.html">Team Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="has-dropdown">
-                                                <a href="project-details.html">
-                                                    Case studies
-                                                    <i class="fas fa-angle-right"></i>
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li><a href="project.html">Case studies</a></li>
-                                                    <li><a href="project-details.html">Case studies Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="pricing.html">Pricing Plan</a></li>
-                                            <li><a href="faq.html">Our Faq</a></li>
-                                            <li><a href="sign-in.html">sign in</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="news-details.html">
-                                            Blog
-                                        </a>
-                                        <ul class="submenu">
-                                            <li><a href="news-grid.html">Blog Grid</a></li>
-                                            <li><a href="news.html">Blog Standard</a></li>
-                                            <li><a href="news-details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html">Contact Us</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="header-right d-flex justify-content-end align-items-center">
-                        <div class="header-button">
-                            <a href="sign-in.html" class="gt-theme-btn gt-theme-btn style-3 bg-border">sign in</a>
-                            <a href="contact.html" class="gt-theme-btn gt-theme-btn style-3 bg-theme">get A demo</a>
-                        </div>
-                        <div class="header__hamburger d-xl-none my-auto">
-                            <div class="sidebar__toggle">
-                                <div class="header-bar">
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+        require_once ('../../assets/includes/elements/header.php');
+    ?>
+
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <!-- Gt Breadcrumb Section Start -->
-            <div class="gt-breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/breadcrumb-bg.jpg');">
+            <div class="gt-breadcrumb-wrapper bg-cover" style="background-image: url('../../assets/img/breadcrumb-bg.jpg');">
                 <div class="container">
                     <div class="gt-page-heading">
                         <div class="gt-breadcrumb-sub-title">
-                            <h1 class="wow fadeInUp" data-wow-delay=".3s">Error 404</h1>
+                            <h1 class="wow fadeInUp" data-wow-delay=".3s">Error 500</h1>
                         </div>
                         <ul class="gt-breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
                             <li>
-                                <a href="index.html">
+                                <a href="<?= get_site_option('site_url') ?>">
                                     Home
                                 </a>
                             </li>
@@ -214,7 +86,7 @@
                                 <i class="fa-solid fa-chevron-right"></i>
                             </li>
                             <li>
-                                Error 404
+                                Error 500
                             </li>
                         </ul>
                     </div>
@@ -228,17 +100,16 @@
                         <div class="col-lg-8">
                             <div class="gt-error-items">
                                 <div class="gt-error-image wow fadeInUp" data-wow-delay=".3s">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/inner/404.png" alt="img">
+                                    <img src="../../assets/img/inner/500.png" alt="img">
                                 </div>
                                 <h2 class="wow fadeInUp" data-wow-delay=".5s">
-                                    Oops! Page Not Written Yet
+                                    Oops! Internal Server Error
                                 </h2>
                                 <p class="wow fadeInUp" data-wow-delay=".3s">
-                                    Looks like this page hasn’t been written yet. Our AI writers are probably drafting
-                                    it now. In the meantime, return to the homepage or explore our other smart content
-                                    services.
+                                    Something went wrong on our end. We’re already looking into it. 
+                                    In the meantime, you can try refreshing the page or head back to the homepage.
                                 </p>
-                                <a href="index.html" class="gt-theme-btn wow fadeInUp" data-wow-delay=".5s">
+                                <a href="<?= get_site_option('site_url') ?>" class="gt-theme-btn wow fadeInUp" data-wow-delay=".5s">
                                     BACK TO HOME
                                 </a>
                             </div>
@@ -250,12 +121,12 @@
             <!-- Gt Footer Section Start -->
             <section class="gt-footer-section-3 footer-3">
                 <div class="footer-dot">
-                    <img src="assets/img/new-add/footer-dot.png" alt="img">
+                    <img src="../../assets/img/new-add/footer-dot.png" alt="img">
                 </div>
                 <div class="gt-cta-section-3 before-white">
                     <div class="container">
                         <div class="gt-cta-wrapper-3 bg-cover"
-                            style="background-image: url('assets/img/home-3/cta-bg.jpg');">
+                            style="background-image: url('../../assets/img/home-3/cta-bg.jpg');">
                             <div class="gt-section-title style-3 mb-0">
                                 <h6 class="wow fadeInUp tt-capitalize">connect with us</h6>
                                 <h2 class="char-animation">
@@ -266,8 +137,8 @@
                                 minutes.
                             </p>
                             <div class="gt-cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                <a href="contact.html" class="gt-theme-btn style-3 bg-header">Get Started</a>
-                                <a href="contact.html" class="gt-theme-btn style-3">Register Now</a>
+                                <a href="<?= get_site_option('site_url') . 'contact/' ?>" class="gt-theme-btn style-3 bg-header">Get Started</a>
+                                <a href="<?= get_site_option('site_url') . 'register/' ?>" class="gt-theme-btn style-3">Register Now</a>
                             </div>
                             <ul class="wow fadeInUp" data-wow-delay=".7s">
                                 <li>
@@ -299,10 +170,10 @@
                                         </p>
                                         <div class="gt-social-icon d-flex align-items-center">
                                             <a href="#">
-                                                <img src="assets/img/home-3/play-store.png" alt="img">
+                                                <img src="../../assets/img/home-3/play-store.png" alt="img">
                                             </a>
                                             <a href="#">
-                                                <img src="assets/img/home-3/app-store.png" alt="img">
+                                                <img src="../../assets/img/home-3/app-store.png" alt="img">
                                             </a>
                                         </div>
                                     </div>
@@ -316,27 +187,27 @@
                                     </div>
                                     <ul class="gt-list-area">
                                         <li>
-                                            <a href="about.html">
+                                            <a href="<?= get_site_option('site_url') . 'about/' ?>">
                                                 About
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="contact.html">
+                                            <a href="<?= get_site_option('site_url') . 'contact/' ?>">
                                                 Careers
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="news.html">
+                                            <a href="<?= get_site_option('site_url') . 'news/' ?>">
                                                 news & Blog
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="contact.html">
+                                            <a href="<?= get_site_option('site_url') . 'contact/' ?>">
                                                 Contact Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="pricing.html">
+                                            <a href="<?= get_site_option('site_url') . 'pricing/' ?>">
                                                 Pricing Plan
                                             </a>
                                         </li>
@@ -416,8 +287,8 @@
                         </div>
                     </div>
                     <div class="gt-footer-bottom-3">
-                        <a href="index.html" class="footer-logo">
-                            <img src="assets/img/logo/theme-logo-2.svg" alt="img">
+                        <a href="<?= get_site_option('site_url') ?>" class="footer-logo">
+                            <img src="../../assets/img/logo/<?= get_site_option('site_logo') ?>" alt="img" style="max-width: 150px;">
                         </a>
                         <p>Copyright Propert-Ease. Design By <b>GramenTheme</b></p>
                         <div class="gt-social-icon d-flex align-items-center style-home-3">
@@ -437,32 +308,32 @@
 
 
     <!--<< All JS Plugins >>-->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="../../assets/js/jquery-3.7.1.min.js"></script>
     <!--<< Viewport Js >>-->
-    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="../../assets/js/viewport.jquery.js"></script>
     <!--<< Bootstrap Js >>-->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!--<< nice-selec Js >>-->
-    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="../../assets/js/jquery.nice-select.min.js"></script>
     <!--<< Waypoints Js >>-->
-    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="../../assets/js/jquery.waypoints.js"></script>
     <!--<< Counterup Js >>-->
-    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="../../assets/js/jquery.counterup.min.js"></script>
     <!--<< Swiper Slider Js >>-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!--<< MeanMenu Js >>-->
-    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="../../assets/js/jquery.meanmenu.min.js"></script>
     <!--<< Parallaxie Js >>-->
-    <script src="assets/js/parallaxie.js"></script>
+    <script src="../../assets/js/parallaxie.js"></script>
     <!--<< Magnific Popup Js >>-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../assets/js/jquery.magnific-popup.min.js"></script>
     <!--<< Wow Animation Js >>-->
-    <script src="assets/js/wow.min.js"></script>
+    <script src="../../assets/js/wow.min.js"></script>
     <!--<< Main.js >>-->
-    <script src="assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
     <!--<< Propert-Ease RAG Chatbot >>-->
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/chatbot.js"></script>
+    <script src="../../assets/js/config.js"></script>
+    <script src="../../assets/js/chatbot.js"></script>
 </body>
 
 </html>

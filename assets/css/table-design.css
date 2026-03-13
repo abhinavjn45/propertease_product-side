@@ -1,0 +1,162 @@
+/* Propert-Ease Comparison Grid - Premium Aesthetic Redesign */
+
+.gt-comparison-grid {
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styling */
+.gt-comparison-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-item {
+    font-family: "TestTiemposFine-Regular-BF66457a50e8bc9", serif;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.header-item.feature-label {
+    text-align: left;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FEBC5F;
+}
+
+.header-item.propertease-edge {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(107, 65, 255, 0.4);
+}
+
+/* Row Styling */
+.gt-comparison-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gt-comparison-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 20px;
+    background: rgba(11, 14, 19, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px 30px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+}
+
+.gt-comparison-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(10px);
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Feature Info Column */
+.feature-info h4 {
+    color: #fff;
+    font-family: "Manrope", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.feature-info p {
+    color: rgba(155, 160, 163, 0.8);
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* Status Columns */
+.market-status, .propertease-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.status-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+}
+
+.market-status .status-content {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.market-status i {
+    font-size: 18px;
+    color: #ff4141; /* Warning/Exit color */
+    opacity: 0.6;
+}
+
+.propertease-status .status-content {
+    color: #A0EA71;
+    font-weight: 600;
+}
+
+.propertease-status i {
+    font-size: 20px;
+    background: linear-gradient(135deg, #A0EA71 0%, #6B41FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(160, 234, 113, 0.3));
+}
+
+/* Specialty Highlighting for Propert-Ease Row Section */
+.gt-comparison-row:hover .propertease-status {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    .gt-comparison-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .gt-comparison-row:hover {
+        transform: translateY(-5px);
+    }
+
+    .market-status, .propertease-status {
+        align-items: flex-start;
+        text-align: left;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .status-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .status-content {
+        gap: 10px;
+    }
+}
