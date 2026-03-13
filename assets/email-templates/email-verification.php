@@ -18,8 +18,9 @@
             .divider { background-color: #2a2f45 !important; }
         }
         @media only screen and (max-width: 600px) {
-            .card-wrapper { border-radius: 0 !important; border: none !important; }
             .content-td { padding: 30px 20px !important; }
+            .title { font-size: 22px !important; }
+            .otp-box { padding: 15px 25px !important; letter-spacing: 5px !important; font-size: 28px !important; }
         }
     </style>
 </head>
@@ -27,7 +28,7 @@
     <div role='article' aria-roledescription='email' aria-label='Verify Your Email' lang='en'>
         <table style='width: 100%; border-collapse: collapse;' cellpadding='0' cellspacing='0' role='presentation'>
             <tr>
-                <td align='center' style='padding: 50px 0;'>
+                <td align='center' style='padding: 40px 15px;'>
                     <!-- Logo Area -->
                     <table style='width: 100%; max-width: 600px;' cellpadding='0' cellspacing='0' role='presentation'>
                         <tr>

@@ -7,6 +7,12 @@
     define('DB_PASS', '');
     define('DB_NAME', 'propertease_new');
 
+    // Live Database
+    // define('DB_HOST', 'srv1673.hstgr.io');
+    // define('DB_USER', 'u955229223_propertease');
+    // define('DB_PASS', 'Abhinav@Developer2024');
+    // define('DB_NAME', 'u955229223_propertease');
+
     $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     if (!$con) {

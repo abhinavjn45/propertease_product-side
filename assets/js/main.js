@@ -598,6 +598,22 @@
 
    
     
+    /* ================================
+       Password Toggle Js Start
+    ================================ */
+    $documentOn.on('click', '.toggle-password', function() {
+        const targetId = $(this).data('target');
+        const $input = $('#' + targetId);
+        
+        if ($input.attr('type') === 'password') {
+            $input.attr('type', 'text');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            $input.attr('type', 'password');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+    });
+
     }); // End Document Ready Function
 
      $.fn.loading = function() {

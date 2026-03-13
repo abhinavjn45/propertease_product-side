@@ -79,7 +79,7 @@
                 </div>
                 <div class="header-right d-flex justify-content-end align-items-center">
                     <div class="header-button">
-                        <a href="<?= get_site_option('site_url') . '/user-auth/login/' ?>" class="gt-theme-btn gt-theme-btn style-3 bg-border">Login</a>
+                        <a href="<?= get_site_option('site_url') . 'user-auth/login/' ?>" class="gt-theme-btn gt-theme-btn style-3 bg-border">Login</a>
                         <a href="<?= get_site_option('site_url') . 'get-started/' ?>" class="gt-theme-btn gt-theme-btn style-3 bg-theme">Get Started</a>
                     </div>
                     <div class="header__hamburger d-xl-none my-auto">

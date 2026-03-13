@@ -106,18 +106,21 @@
                     <label style="display:block;font-size:13px;font-weight:600;color:#1a1a2e;margin-bottom:8px;">
                         <i class="fa-solid fa-lock" style="color:#2D31FA;margin-right:6px;"></i>Create Password*
                     </label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" required style="
-                            width:100%;padding:14px 18px;
-                            border:1.5px solid #e2e5f1;
-                            border-radius:12px;
-                            font-size:14px;
-                            color: #1a1a2e;
-                            background:#fff;
-                            transition:all 0.3s ease;
-                            outline:none;
-                        "
-                        onfocus="this.style.borderColor='#2D31FA';this.style.boxShadow='0 0 0 3px rgba(45,49,250,0.08)'"
-                        onblur="this.style.borderColor='#e2e5f1';this.style.boxShadow='none'">
+                    <div style="position:relative;">
+                        <input type="password" name="password" id="password" placeholder="••••••••" required style="
+                                width:100%;padding:14px 45px 14px 18px;
+                                border:1.5px solid #e2e5f1;
+                                border-radius:12px;
+                                font-size:14px;
+                                color: #1a1a2e;
+                                background:#fff;
+                                transition:all 0.3s ease;
+                                outline:none;
+                            "
+                            onfocus="this.style.borderColor='#2D31FA';this.style.boxShadow='0 0 0 3px rgba(45,49,250,0.08)'"
+                            onblur="this.style.borderColor='#e2e5f1';this.style.boxShadow='none'">
+                        <i class="fa-solid fa-eye-slash toggle-password" data-target="password" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer; color:#666; font-size:16px;"></i>
+                    </div>
                 </div>
             </div>
 
@@ -127,19 +130,22 @@
                     <label style="display:block;font-size:13px;font-weight:600;color:#1a1a2e;margin-bottom:8px;">
                         <i class="fa-solid fa-key" style="color:#2D31FA;margin-right:6px;"></i>Confirm Password*
                     </label>
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" required
-                        style="
-                            width:100%;padding:14px 18px;
-                            border:1.5px solid #e2e5f1;
-                            border-radius:12px;
-                            font-size:14px;
-                            color: #1a1a2e;
-                            background:#fff;
-                            transition:all 0.3s ease;
-                            outline:none;
-                        "
-                        onfocus="this.style.borderColor='#2D31FA';this.style.boxShadow='0 0 0 3px rgba(45,49,250,0.08)'"
-                        onblur="this.style.borderColor='#e2e5f1';this.style.boxShadow='none'">
+                    <div style="position:relative;">
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="••••••••" required
+                            style="
+                                width:100%;padding:14px 45px 14px 18px;
+                                border:1.5px solid #e2e5f1;
+                                border-radius:12px;
+                                font-size:14px;
+                                color: #1a1a2e;
+                                background:#fff;
+                                transition:all 0.3s ease;
+                                outline:none;
+                            "
+                            onfocus="this.style.borderColor='#2D31FA';this.style.boxShadow='0 0 0 3px rgba(45,49,250,0.08)'"
+                            onblur="this.style.borderColor='#e2e5f1';this.style.boxShadow='none'">
+                        <i class="fa-solid fa-eye-slash toggle-password" data-target="confirm_password" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer; color:#666; font-size:16px;"></i>
+                    </div>
                 </div>
             </div>
 
@@ -532,7 +538,7 @@
                             Your account is now fully active. You can now access the Propert-Ease dashboard.
                         </p>
                         
-                        <a href="<?= get_site_option('site_url') ?>user-side/admin/login.php" class="gt-theme-btn" style="
+                        <a href="<?= get_site_option('site_url') ?>user-auth/login/" class="gt-theme-btn" style="
                             display: block;
                             padding: 20px 40px;
                             background: #1a1a2e;
