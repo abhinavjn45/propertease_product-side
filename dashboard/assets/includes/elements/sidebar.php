@@ -11,68 +11,77 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-        <li class="dropdown">
-            <a href="javascript:void(0)">
-            <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
-            <span>Dashboard</span>
-            </a>
-            <ul class="sidebar-submenu">
             <li>
-                <a href="index.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> AI</a>
+                <a href="<?= $dashboard_url ?>">
+                    <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="sidebar-menu-group-title">Application</li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="solar:buildings-outline" class="menu-icon"></iconify-icon>
+                    <span>Societies</span> 
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="<?= $dashboard_url ?>?type=societies&page=manage-societies">
+                            <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> 
+                            All Societies
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= $dashboard_url ?>?type=societies&page=add-society">
+                            <i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> 
+                            Add Society
+                        </a>
+                    </li>
+                    <li>
+                        <a href="invoice-edit.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Edit</a>
+                    </li>
+                </ul>
+            </li>
+        
+            <li>
+                <a href="email.html">
+                <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
+                <span>Email</span>
+                </a>
             </li>
             <li>
-                <a href="index-2.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> CRM</a>
+                <a href="chat-message.html">
+                <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
+                <span>Chat</span> 
+                </a>
             </li>
             <li>
-                <a href="index-3.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> eCommerce</a>
+                <a href="calendar-main.html">
+                <iconify-icon icon="solar:calendar-outline" class="menu-icon"></iconify-icon>
+                <span>Calendar</span> 
+                </a>
             </li>
-            <li>
-                <a href="index-4.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Cryptocurrency</a>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                <span>Invoice</span> 
+                </a>
+                <ul class="sidebar-submenu">
+                <li>
+                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> List</a>
+                </li>
+                <li>
+                    <a href="invoice-preview.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Preview</a>
+                </li>
+                <li>
+                    <a href="invoice-add.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add new</a>
+                </li>
+                <li>
+                    <a href="invoice-edit.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Edit</a>
+                </li>
+                </ul>
             </li>
-            <li>
-                <a href="index-5.html"><i class="ri-circle-fill circle-icon text-success-main w-auto"></i> Investment</a>
-            </li>
-            </ul>
-        </li>
-        <li class="sidebar-menu-group-title">Application</li>
-        <li>
-            <a href="email.html">
-            <iconify-icon icon="mage:email" class="menu-icon"></iconify-icon>
-            <span>Email</span>
-            </a>
-        </li>
-        <li>
-            <a href="chat-message.html">
-            <iconify-icon icon="bi:chat-dots" class="menu-icon"></iconify-icon>
-            <span>Chat</span> 
-            </a>
-        </li>
-        <li>
-            <a href="calendar-main.html">
-            <iconify-icon icon="solar:calendar-outline" class="menu-icon"></iconify-icon>
-            <span>Calendar</span> 
-            </a>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)">
-            <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-            <span>Invoice</span> 
-            </a>
-            <ul class="sidebar-submenu">
-            <li>
-                <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> List</a>
-            </li>
-            <li>
-                <a href="invoice-preview.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Preview</a>
-            </li>
-            <li>
-                <a href="invoice-add.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add new</a>
-            </li>
-            <li>
-                <a href="invoice-edit.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Edit</a>
-            </li>
-            </ul>
-        </li>
 
         <li class="sidebar-menu-group-title">Application</li> 
 

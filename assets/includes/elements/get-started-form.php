@@ -219,7 +219,7 @@
                     })
                     .then(data => {
                         if (data.success) {
-                            const userEmail = formData.get('email'); // Capture email for OTP delivery
+                            let userEmail = formData.get('email'); // Capture email for OTP delivery
 
                             const container = document.getElementById('registration-container');
                             container.style.opacity = '0';
@@ -307,10 +307,98 @@
                                     });
                                 };
 
-                                // Edit Email Action (Goes back to form)
+                                // Edit Email Action (Inline Edit)
                                 document.getElementById('editEmailBtn').onclick = function() {
-                                    window.location.reload();
+                                    const parent = this.parentElement;
+                                    const p = document.querySelector('#success-state p');
+                                    const originalEmail = userEmail;
+
+                                    p.innerHTML = `
+                                        <div class="mb-3">
+                                            <input type="email" id="newEmailInput" value="${originalEmail}" style="
+                                                width: 100%;
+                                                padding: 14px 18px;
+                                                border: 1.5px solid #e2e5f1;
+                                                border-radius: 12px;
+                                                font-size: 14px;
+                                                color: #1a1a2e;
+                                                background: #fff;
+                                                transition: all 0.3s ease;
+                                                outline: none;
+                                                box-shadow: none;
+                                                text-align: center;
+                                            " onfocus="this.style.borderColor='#2D31FA';this.style.boxShadow='0 0 0 3px rgba(45,49,250,0.08)'" onblur="this.style.borderColor='#e2e5f1';this.style.boxShadow='none'">
+                                        </div>
+                                    `;
+                                    
+                                    this.style.display = 'none';
+                                    const sendBtn = document.getElementById('sendOtpBtn');
+                                    sendBtn.innerHTML = '<i class="fa-solid fa-save"></i> Save & Resend OTP';
+                                    
+                                    sendBtn.onclick = function() {
+                                        const newEmail = document.getElementById('newEmailInput').value;
+                                        if(!newEmail || !newEmail.includes('@')) {
+                                            Swal.fire({ icon: 'error', title: 'Invalid Email', text: 'Please enter a valid email address.' });
+                                            return;
+                                        }
+
+                                        const btn = this;
+                                        btn.disabled = true;
+                                        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Updating...';
+
+                                        const updateData = new FormData();
+                                        updateData.append('old_email', originalEmail);
+                                        updateData.append('new_email', newEmail);
+
+                                        fetch('../assets/includes/functions/ajax-handlers/ajax-update-registration-email.php', {
+                                            method: 'POST',
+                                            body: updateData
+                                        })
+                                        .then(res => res.json())
+                                        .then(res => {
+                                            if (res.success) {
+                                                userEmail = newEmail; // Update closure variable
+                                                Swal.fire({ icon: 'success', title: 'Email Updated', text: 'Sending verification code to ' + newEmail, timer: 1500, showConfirmButton: false });
+                                                setTimeout(() => {
+                                                    triggerOtpSend(newEmail, btn);
+                                                }, 1000);
+                                            } else {
+                                                btn.disabled = false;
+                                                btn.innerHTML = '<i class="fa-solid fa-save"></i> Save & Resend OTP';
+                                                Swal.fire({ icon: 'error', title: 'Update Failed', text: res.error || 'Could not update email.' });
+                                            }
+                                        })
+                                        .catch(err => {
+                                            console.error('Update fetch error:', err);
+                                            btn.disabled = false;
+                                            btn.innerHTML = '<i class="fa-solid fa-save"></i> Save & Resend OTP';
+                                            Swal.fire({ icon: 'error', title: 'Server Error', text: 'Failed to update email due to a network or server error.' });
+                                        });
+                                    };
                                 };
+
+                                function triggerOtpSend(email, btn) {
+                                    btn.disabled = true;
+                                    btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending code...';
+                                    
+                                    const otpData = new FormData();
+                                    otpData.append('email', email);
+                                    
+                                    fetch('../assets/includes/functions/ajax-handlers/ajax-send-otp.php', {
+                                        method: 'POST',
+                                        body: otpData
+                                    })
+                                    .then(res => res.json())
+                                    .then(res => {
+                                        if (res.success) {
+                                            showOtpInputState(email);
+                                        } else {
+                                            btn.disabled = false;
+                                            btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send OTP to Email';
+                                            Swal.fire({ icon: 'error', title: 'Failed to Send', text: res.error || 'Please try again.' });
+                                        }
+                                    });
+                                }
 
                             }, 500);
                         } else {
