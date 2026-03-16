@@ -1,9 +1,10 @@
-<?php 
-    require_once('./assets/includes/config/config.php');
-    require_once ('./assets/includes/functions/utility/element_fetcher.php');
+<?php
+require_once('./assets/includes/config/config.php');
+require_once('./assets/includes/functions/utility/element_fetcher.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- ========== Meta Tags ========== -->
     <meta charset="UTF-8">
@@ -16,11 +17,15 @@
     <title><?= get_site_option('site_title') . " | " . get_site_option('site_tagline') ?></title>
 
     <!--<< Favcion >>-->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('apple_touch_icon') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('favicon_32x32') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('favicon_16x16') ?>">
-    <link rel="manifest" href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('site_webmanifest') ?>">
-    
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('apple_touch_icon') ?>">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('favicon_32x32') ?>">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('favicon_16x16') ?>">
+    <link rel="manifest"
+        href="<?= get_site_option('site_url') . 'assets/img/favicon/' . get_site_option('site_webmanifest') ?>">
+
     <!--<< Bootstrap min.css >>-->
     <link rel="stylesheet" href="<?= get_site_option('site_url') . 'assets/css/bootstrap.min.css' ?>">
     <!--<< All Min Css >>-->
@@ -46,22 +51,22 @@
 <body class="body-bg-2">
 
     <?php
-        // Preloader
-        require_once ('./assets/includes/elements/preloader.php');
+    // Preloader
+    require_once('./assets/includes/elements/preloader.php');
 
-        // GT Back To Top Start
-        require_once ('./assets/includes/elements/back-to-top.php');
+    // GT Back To Top Start
+    require_once('./assets/includes/elements/back-to-top.php');
 
-        // GT MouseCursor Start
-        require_once ('./assets/includes/elements/mouse-cursor.php');
+    // GT MouseCursor Start
+    require_once('./assets/includes/elements/mouse-cursor.php');
 
-        // Offcanvas Area Start
-        require_once ('./assets/includes/elements/offcanvas.php');
+    // Offcanvas Area Start
+    require_once('./assets/includes/elements/offcanvas.php');
 
-        // Header Section Start
-        require_once ('./assets/includes/elements/topbar.php');
+    // Header Section Start
+    require_once('./assets/includes/elements/topbar.php');
 
-        require_once ('./assets/includes/elements/header.php');
+    require_once('./assets/includes/elements/header.php');
     ?>
 
     <div id="smooth-wrapper">
@@ -69,7 +74,8 @@
             <!-- Gt Hero Section Start -->
             <section class="gt-hero-section gt-hero-3">
                 <div class="hero-circle-shape">
-                    <img src="<?= get_site_option('site_url') . 'assets/img/home-3/' . get_hero_section_data('background_image') ?>" alt="img">
+                    <img src="<?= get_site_option('site_url') . 'assets/img/home-3/' . get_hero_section_data('background_image') ?>"
+                        alt="img">
                 </div>
                 <div class="container">
                     <div class="gt-hero-content">
@@ -81,21 +87,24 @@
                         </p>
 
                         <!-- Hero Section Form -->
-                        <?php 
-                            require_once ('./assets/includes/elements/hero-email-form.php')
-                        ?>
+                        <?php
+                        require_once('./assets/includes/elements/hero-email-form.php')
+                            ?>
 
                         <ul class="wow fadeInUp" data-wow-delay=".7s">
                             <?= get_hero_section_data('list_items') ?>
                         </ul>
                     </div>
                     <div class="gt-hero-image">
-                        <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('main_image') ?>" alt="img">
+                        <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('main_image') ?>"
+                            alt="img">
                         <div class="gt-hero-left">
-                            <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('left_image') ?>" alt="img">
+                            <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('left_image') ?>"
+                                alt="img">
                         </div>
                         <div class="gt-hero-right">
-                            <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('right_image') ?>" alt="img">
+                            <img src="<?= get_site_option('site_url') . 'assets/img/home-3/hero/' . get_hero_section_data('right_image') ?>"
+                                alt="img">
                         </div>
                     </div>
                 </div>
@@ -209,7 +218,8 @@
                                 <div class="gt-about-image agn-choose-5-img">
 
                                     <div class="crm-imagewow wow fadeInRight" data-wow-delay=".3s">
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/new-add/crm-img.png" alt="">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/new-add/crm-img.png"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
@@ -439,7 +449,8 @@
                                 </div>
                                 <div class="swiper-slide">
                                     <div class="gt-product-tour-image">
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/product-tour/product-tour-02.png" alt="img">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/product-tour/product-tour-02.png"
+                                            alt="img">
                                     </div>
                                 </div>
                                 <div class="swiper-slide">
@@ -735,7 +746,7 @@
                                             <div class="gradient-bg"></div>
                                             <div class="gt-pricing-header">
                                                 <h2>
-                                                    <sup>$</sup>
+                                                    <sup>₹</sup>
                                                     32
                                                     <sub>/mo</sub>
                                                 </h2>
@@ -785,7 +796,7 @@
                                             <div class="gradient-bg"></div>
                                             <div class="gt-pricing-header">
                                                 <h2>
-                                                    <sup>$</sup>
+                                                    <sup>₹</sup>
                                                     69
                                                     <sub>/mo</sub>
                                                 </h2>
@@ -992,7 +1003,8 @@
                                         <div class="quote-icon">
                                             <img src="assets/img/home-3/testimonial/quote.svg" alt="img">
                                         </div>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/testimonial/client-info.png" alt="">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/testimonial/client-info.png"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1010,7 +1022,8 @@
                                         <div class="quote-icon">
                                             <img src="assets/img/home-3/testimonial/quote.svg" alt="img">
                                         </div>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/testimonial/client-info.png" alt="">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/testimonial/client-info.png"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
@@ -1036,8 +1049,10 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 advance-item">
                             <div class="gt-news-box-items-3">
                                 <div class="gt-thumb">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-01.jpg" alt="img">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-01.jpg" alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-01.jpg"
+                                        alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-01.jpg"
+                                        alt="img">
                                 </div>
                                 <div class="gt-content">
                                     <ul>
@@ -1049,7 +1064,8 @@
                                             Digital Constitution</a>
                                     </h4>
                                     <span>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png" alt="img">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png"
+                                            alt="img">
                                         Propert-Ease Legal Team
                                     </span>
                                 </div>
@@ -1058,8 +1074,10 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 advance-item">
                             <div class="gt-news-box-items-3">
                                 <div class="gt-thumb">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-02.jpg" alt="img">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-02.jpg" alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-02.jpg"
+                                        alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-02.jpg"
+                                        alt="img">
                                 </div>
                                 <div class="gt-content">
                                     <ul>
@@ -1071,7 +1089,8 @@
                                             Liability for 5 Years</a>
                                     </h4>
                                     <span>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png" alt="img">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png"
+                                            alt="img">
                                         Propert-Ease Compliance
                                     </span>
                                 </div>
@@ -1080,8 +1099,10 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 advance-item">
                             <div class="gt-news-box-items-3">
                                 <div class="gt-thumb">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-03.jpg" alt="img">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-03.jpg" alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-03.jpg"
+                                        alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-03.jpg"
+                                        alt="img">
                                 </div>
                                 <div class="gt-content">
                                     <ul>
@@ -1093,7 +1114,8 @@
                                             Member Grievances</a>
                                     </h4>
                                     <span>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png" alt="img">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png"
+                                            alt="img">
                                         Governance Expert
                                     </span>
                                 </div>
@@ -1102,8 +1124,10 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 advance-item">
                             <div class="gt-news-box-items-3">
                                 <div class="gt-thumb">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-04.jpg" alt="img">
-                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-04.jpg" alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-04.jpg"
+                                        alt="img">
+                                    <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/news-04.jpg"
+                                        alt="img">
                                 </div>
                                 <div class="gt-content">
                                     <ul>
@@ -1115,7 +1139,8 @@
                                             .site Domain</a>
                                     </h4>
                                     <span>
-                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png" alt="img">
+                                        <img src="https://ex-coders.com/html/boostly/assets/img/home-3/news/info.png"
+                                            alt="img">
                                         Tech Onboarding
                                     </span>
                                 </div>
@@ -1126,8 +1151,8 @@
             </section>
 
             <!-- Gt Footer Section Start -->
-            <?php 
-                require_once ('./assets/includes/elements/footer.php');
+            <?php
+            require_once('./assets/includes/elements/footer.php');
             ?>
         </div>
     </div>
@@ -1161,7 +1186,12 @@
     <!--<< Main.js >>-->
     <script src="<?= get_site_option('site_url') . 'assets/js/main.js' ?>"></script>
     <!--<< Propert-Ease RAG Chatbot >>-->
-    <script src="<?= get_site_option('site_url') . 'assets/js/config.js' ?>"></script>
+    <script>
+        window.PROPERTEASE_OPENROUTER_KEY = "<?= getenv('OPENROUTER_API_KEY') ?: '' ?>";
+    </script>
+    <?php if (file_exists(__DIR__ . '/assets/js/config.js')): ?>
+        <script src="<?= get_site_option('site_url') . 'assets/js/config.js' ?>"></script>
+    <?php endif; ?>
     <script src="<?= get_site_option('site_url') . 'assets/js/chatbot.js' ?>"></script>
 </body>
 

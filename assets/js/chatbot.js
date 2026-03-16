@@ -9,8 +9,8 @@
 
     // ──────────────────────────── CONFIG ────────────────────────────
     const CONFIG = {
-        apiKey: window.PROPERTEASE_GEMINI_KEY || '',
-        models: ['gemini-2.5-flash-preview-05-20', 'gemini-2.5-flash'],  // available models for this API key
+        apiKey: (window.PROPERTEASE_OPENROUTER_KEY || '').trim(),
+        model: 'openai/gpt-4o-mini',   // OpenRouter model identifier
         knowledgeBasePath: null,       // auto-detected
         topK: 3,                       // chunks to retrieve
         maxHistory: 6,                 // conversation pairs to keep
@@ -23,7 +23,6 @@
     let chatHistory = [];
     let isOpen = false;
     let isTyping = false;
-    let workingModel = CONFIG.models[0]; // track which model works
 
     // ──────────────────────────── UTILITIES ────────────────────────────
 
@@ -163,40 +162,28 @@ ${context}`;
         return systemPrompt;
     }
 
-    /** Try a single API call with a specific model */
-    async function tryGeminiCall(modelName, systemPrompt, contents) {
-        // First, try the secure proxy (Vercel deployment)
-        try {
-            const proxyResponse = await fetch('/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ modelName, systemPrompt, contents })
-            });
+    // ──────────────────────────── OPENROUTER API ────────────────────────────
 
-            if (proxyResponse.ok) {
-                const data = await proxyResponse.json();
-                const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (text) return text;
-            }
-        } catch (e) {
-            console.warn('[Chatbot] Proxy unavailable, falling back to client-side call.');
-        }
-
-        // Fallback: Direct client-side call (local development)
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${CONFIG.apiKey}`;
+    /** Try a single API call to OpenRouter */
+    async function tryOpenRouterCall(systemPrompt, messages) {
+        const url = `https://openrouter.ai/api/v1/chat/completions`;
 
         const response = await fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${CONFIG.apiKey}`,
+                'HTTP-Referer': window.location.origin, // Optional, for OpenRouter rankings
+                'X-Title': 'Propert-Ease AI Chatbot'   // Optional
+            },
             body: JSON.stringify({
-                system_instruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                contents: contents,
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 500,
-                }
+                model: CONFIG.model,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    ...messages
+                ],
+                temperature: 0.7,
+                max_tokens: 500
             })
         });
 
@@ -206,71 +193,62 @@ ${context}`;
         }
 
         const data = await response.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        const text = data?.choices?.[0]?.message?.content;
         if (!text) throw { status: 0, body: 'Empty response' };
         return text;
     }
 
-    /** Send message to Gemini API — tries multiple models with retry */
-    async function callGemini(query, chunks) {
+    /** Send message to OpenRouter API */
+    async function callOpenRouter(query, chunks) {
+        if (!CONFIG.apiKey || CONFIG.apiKey === 'YOUR_OPENROUTER_API_KEY_HERE') {
+            return "⚠️ **Configuration Required**: Please add your **OpenRouter API Key** in `assets/js/config.js`.";
+        }
+
         const systemPrompt = buildPrompt(query, chunks);
 
-        // Build contents array with history
-        const contents = [];
+        // Build messages array with history
+        const messages = [];
         chatHistory.forEach(msg => {
-            contents.push({
-                role: msg.role === 'user' ? 'user' : 'model',
-                parts: [{ text: msg.text }]
+            messages.push({
+                role: msg.role === 'user' ? 'user' : 'assistant',
+                content: msg.text
             });
         });
-        contents.push({ role: 'user', parts: [{ text: query }] });
+        messages.push({ role: 'user', content: query });
 
-        // Try the working model first, then fallbacks
-        const modelsToTry = [workingModel, ...CONFIG.models.filter(m => m !== workingModel)];
-        let lastError = null;
+        try {
+            console.log(`[Chatbot] Calling OpenRouter with model: ${CONFIG.model}`);
+            console.log(`[Chatbot] Messages:`, messages);
 
-        for (const model of modelsToTry) {
-            // Try up to 2 times per model (with delay on 429)
-            for (let attempt = 0; attempt < 2; attempt++) {
-                try {
-                    console.log(`[Chatbot] Trying model: ${model} (attempt ${attempt + 1})`);
-                    const text = await tryGeminiCall(model, systemPrompt, contents);
-                    workingModel = model; // remember which model worked
-                    console.log(`[Chatbot] Success with model: ${model}`);
-                    return text;
-                } catch (err) {
-                    lastError = err;
-                    console.warn(`[Chatbot] ${model} failed (${err.status}):`, err.body);
+            const text = await tryOpenRouterCall(systemPrompt, messages);
+            console.log(`[Chatbot] Success response received.`);
+            return text;
+        } catch (err) {
+            console.error(`[Chatbot] API call failure:`, err);
 
-                    if (err.status === 429 && attempt === 0) {
-                        // Rate limited — wait and retry same model
-                        console.log(`[Chatbot] Rate limited, waiting 3s...`);
-                        await new Promise(r => setTimeout(r, 3000));
-                        continue;
-                    }
-                    break; // try next model
-                }
+            const statusCode = err.status || 'Unknown';
+            let errorMessage = 'Network or connection error';
+
+            if (err.body && err.body.error) {
+                errorMessage = err.body.error.message || JSON.stringify(err.body.error);
+            } else if (err.message) {
+                errorMessage = err.message;
             }
-        }
 
-        // All models failed
-        console.error('[Chatbot] All models failed. Last error:', lastError);
+            console.error(`[Chatbot] Detailed error: [Status ${statusCode}] ${errorMessage}`);
 
-        // Specific guidance for missing configuration
-        if (!CONFIG.apiKey || CONFIG.apiKey === 'YOUR_GEMINI_API_KEY_HERE') {
-            if (lastError?.body?.error?.includes('not configured on server')) {
-                return "⚠️ **Vercel Configuration Required**: Please add `GEMINI_API_KEY` to your Vercel Environment Variables.";
+            if (statusCode === 401) {
+                return "⚠️ **Authentication Error**: The API key is invalid or not provided. Please check `assets/js/config.js` or your Hostinger environment variables.";
             }
-            return "⚠️ **Local Configuration Required**: Please copy `assets/js/config.example.js` to `assets/js/config.js` and add your **Gemini API Key**.";
-        }
+            if (statusCode === 402) {
+                return "⚠️ **Insufficient Credits**: Your OpenRouter account seems to have run out of credits.";
+            }
+            if (statusCode === 429) {
+                return "I'm experiencing high traffic or hit a rate limit. Please wait a few seconds and try again! 😊";
+            }
 
-        if (lastError?.status === 429) {
-            return "I'm experiencing high traffic right now. Please wait a few seconds and try again! 😊";
+            return `Sorry, I'm having trouble connecting to my brain. (Error: ${errorMessage})`;
         }
-        if (lastError?.status === 403) {
-            return "⚠️ API key issue. Please verify your Gemini API key at https://aistudio.google.com/apikey";
-        }
-        return "Sorry, I'm having trouble connecting. Please try again or contact us at support@propertease.in.";
     }
 
     // ──────────────────────────── CHAT UI ────────────────────────────
@@ -427,21 +405,27 @@ ${context}`;
         // Show typing
         showTyping(true);
 
-        // Retrieve relevant chunks
-        const chunks = retrieve(query);
+        try {
+            // Retrieve relevant chunks
+            const chunks = retrieve(query);
 
-        // Call Gemini
-        const response = await callGemini(query, chunks);
+            // Call OpenRouter
+            const response = await callOpenRouter(query, chunks);
 
-        // Hide typing, show response
-        showTyping(false);
-        addMessage(response, 'bot');
+            // Hide typing, show response
+            showTyping(false);
+            addMessage(response, 'bot');
 
-        // Update history (keep last N exchanges)
-        chatHistory.push({ role: 'user', text: query });
-        chatHistory.push({ role: 'assistant', text: response });
-        if (chatHistory.length > CONFIG.maxHistory * 2) {
-            chatHistory = chatHistory.slice(-CONFIG.maxHistory * 2);
+            // Update history (keep last N exchanges)
+            chatHistory.push({ role: 'user', text: query });
+            chatHistory.push({ role: 'assistant', text: response });
+            if (chatHistory.length > CONFIG.maxHistory * 2) {
+                chatHistory = chatHistory.slice(-CONFIG.maxHistory * 2);
+            }
+        } catch (error) {
+            console.error('[Chatbot] handleSend error:', error);
+            showTyping(false);
+            addMessage("Something went wrong while processing your request. Please try again.", 'bot');
         }
     }
 

@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+﻿<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <h6 class="fw-semibold mb-0">Add Society</h6>
     <ul class="d-flex align-items-center gap-2">
         <li class="fw-medium">
@@ -46,7 +46,7 @@
                                 </div>
                             </td>
                             <td>25 Jan 2024</td>
-                            <td>$200.00</td>
+                            <td>₹200.00</td>
                             <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Paid</span> </td>
                             <td>
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
@@ -66,4 +66,5 @@
         </div>
     </div>
 </div>
+
 
