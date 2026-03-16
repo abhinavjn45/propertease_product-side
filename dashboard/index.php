@@ -99,6 +99,8 @@
                                 require_once ('./assets/includes/pages/societies/all-societies.php');
                             } elseif ($page === 'add-society') {
                                 require_once ('./assets/includes/pages/societies/add-society.php');
+                            } elseif ($page === 'finish-verification') {
+                                require_once ('./assets/includes/pages/societies/finish_verification.php');
                             }
                         }
                     }
