@@ -33,7 +33,7 @@
                             <th scope="col">Society Address</th>
                             <th scope="col">Society URL</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="societiesTableBody">
@@ -98,12 +98,16 @@
                         let statusClass = 'bg-info-focus text-info-main';
                         if (society.society_status === 'active') statusClass = 'bg-success-focus text-success-main';
                         else if (society.society_status === 'pending_verification') statusClass = 'bg-warning-focus text-warning-main';
+                        else if (society.society_status === 'pending_setup') statusClass = 'bg-info-focus text-info-main';
                         else if (society.society_status === 'inactive') statusClass = 'bg-danger-focus text-danger-main';
 
                         // Conditional Actions
                         let actionsHtml = '';
                         if (society.society_status === 'pending_verification') {
                             actionsHtml = `<a href="<?= $dashboard_url ?>?type=societies&page=finish-verification&society_id=${society.society_unique_id}" class="btn btn-sm btn-primary-600 rounded-pill">Finish Verification</a>`;
+                        } else if (society.society_status === 'pending_setup') {
+                            const setupUrl = society.society_domain ? `https://${society.society_domain}/admin` : '#';
+                            actionsHtml = `<a href="${setupUrl}" target="_blank" class="btn btn-sm btn-success-600 rounded-pill">Complete Setup</a>`;
                         } else {
                             actionsHtml = `
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center" title="View">
