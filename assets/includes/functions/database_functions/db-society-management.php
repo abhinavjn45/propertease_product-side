@@ -199,10 +199,10 @@ function activate_society_domain($society_id, $domain) {
     $society_id = $con->real_escape_string($society_id);
     $domain = $con->real_escape_string($domain);
     
-    $query = "UPDATE societies SET society_status = 'active', society_domain = '$domain' WHERE society_unique_id = '$society_id'";
+    $query = "UPDATE societies SET society_status = 'pending_setup', society_domain = '$domain' WHERE society_unique_id = '$society_id'";
     
     if ($con->query($query)) {
-        return ['status' => 'success', 'message' => 'Society activated and domain updated successfully.'];
+        return ['status' => 'success', 'message' => 'Society domain verified! Status updated to pending setup.'];
     } else {
         return ['status' => 'error', 'message' => 'Database error: ' . $con->error];
     }
