@@ -264,8 +264,8 @@
                 // Simulate/Parse DNS logic (from user provided logic)
                 const parts = domain.split('.');
                 let recordsHtml = '';
-                const masterServer = "nodes.propert-ease.in";
-                const serverIp = "123.45.67.89"; // User provided IP
+                const masterServer = "app-propertease.abhinavjain.site";
+                const serverIp = "82.112.229.182"; // Updated from resolution
 
                 if (parts.length > 2) {
                     // Subdomain case: portal.society.com -> Host is 'portal'

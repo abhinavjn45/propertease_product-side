@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     update_society_domain($society_id, $domain);
 
     // Target values
-    $target_cname = "nodes.propert-ease.in";
-    $target_ip = "123.45.67.89";
+    $target_cname = "app-propertease.abhinavjain.site";
+    $target_ip = "82.112.229.182";
 
     $parts = explode('.', $domain);
     $is_verified = false;
