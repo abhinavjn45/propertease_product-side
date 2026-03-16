@@ -13133,3 +13133,21 @@ td.fc-header-center {
 }
 
 /* === footer css end === */
+/* SweetAlert Global Overrides */
+.swal2-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary-light) !important;
+}
+.swal2-html-container {
+  font-size: 0.8125rem !important;
+}
+.swal2-popup {
+  padding: 1.25rem !important;
+  border-radius: 12px !important;
+}
+.swal2-styled.swal2-confirm {
+  background-color: var(--primary-600) !important;
+  padding: 8px 24px !important;
+  font-size: 0.8125rem !important;
+}

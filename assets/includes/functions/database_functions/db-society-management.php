@@ -164,4 +164,81 @@ function register_society($data, $files = []) {
         return ['status' => 'error', 'message' => 'Database error: ' . $con->error];
     }
 }
+
+/**
+ * Fetches all societies created by a specific user
+ * 
+ * @param string $user_id Unique ID of the user who added the societies
+ * @return array List of societies
+ */
+function get_societies_by_user_id($user_id) {
+    global $con;
+    $user_id = $con->real_escape_string($user_id);
+    
+    $query = "SELECT * FROM societies WHERE society_added_by = '$user_id' ORDER BY society_id DESC";
+    $result = $con->query($query);
+    
+    $societies = [];
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $societies[] = $row;
+        }
+    }
+    
+    return $societies;
+}
+/**
+ * Activates a society and updates its verified domain
+ * 
+ * @param string $society_id Unique ID of the society
+ * @param string $domain The verified domain
+ * @return array Status and message
+ */
+function activate_society_domain($society_id, $domain) {
+    global $con;
+    $society_id = $con->real_escape_string($society_id);
+    $domain = $con->real_escape_string($domain);
+    
+    $query = "UPDATE societies SET society_status = 'active', society_domain = '$domain' WHERE society_unique_id = '$society_id'";
+    
+    if ($con->query($query)) {
+        return ['status' => 'success', 'message' => 'Society activated and domain updated successfully.'];
+    } else {
+        return ['status' => 'error', 'message' => 'Database error: ' . $con->error];
+    }
+}
+
+/**
+ * Updates the domain for a society
+ * 
+ * @param string $society_id Unique ID of the society
+ * @param string $domain The domain to save
+ * @return bool Success or failure
+ */
+function update_society_domain($society_id, $domain) {
+    global $con;
+    $society_id = $con->real_escape_string($society_id);
+    $domain = $con->real_escape_string($domain);
+    
+    $query = "UPDATE societies SET society_domain = '$domain' WHERE society_unique_id = '$society_id'";
+    return $con->query($query);
+}
+
+/**
+ * Checks if a domain is already associated with another society
+ * 
+ * @param string $domain The domain to check
+ * @param string $exclude_id The society ID to exclude from the check
+ * @return bool True if domain is in use, false otherwise
+ */
+function is_domain_in_use($domain, $exclude_id) {
+    global $con;
+    $domain = $con->real_escape_string($domain);
+    $exclude_id = $con->real_escape_string($exclude_id);
+    
+    $query = "SELECT society_id FROM societies WHERE society_domain = '$domain' AND society_unique_id != '$exclude_id' LIMIT 1";
+    $result = $con->query($query);
+    
+    return ($result && $result->num_rows > 0);
+}
 ?>

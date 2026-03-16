@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="<?= get_site_option('site_url') . 'assets/css/main.css' ?>">
     <!--<< Chatbot >>-->
     <link rel="stylesheet" href="<?= get_site_option('site_url') . 'assets/css/chatbot.css' ?>">
+    <!-- Data Table css -->
+    <link rel="stylesheet" href="<?= get_site_option('site_url') . 'assets/css/lib/dataTables.min.css' ?>">
 </head>
 
 <body class="body-bg-2">
@@ -1163,6 +1165,9 @@
     <!--<< Propert-Ease RAG Chatbot >>-->
     <script src="<?= get_site_option('site_url') . 'assets/js/config.js' ?>"></script>
     <script src="<?= get_site_option('site_url') . 'assets/js/chatbot.js' ?>"></script>
-</body>
 
+    <!-- Data Table js -->
+    <script src="<?= get_site_option('site_url') . 'assets/js/lib/dataTables.min.js' ?>"></script>
+
+</body>
 </html>
