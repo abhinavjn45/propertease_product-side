@@ -81,9 +81,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update database
         $result = activate_society_domain($society_id, $domain);
         if ($result['status'] === 'success') {
+            // Sync user to office_members table as admin
+            $sync_result = sync_society_admin_to_office_members($society_id, $_SESSION['user_unique_id']);
+            
+            // Initialize Society Site Options (Branding, URLs, Mail)
+            $society = get_society_by_unique_id($society_id);
+            $init_result = ['status' => 'skipped'];
+            if ($society) {
+                $init_result = initialize_society_site_options($society_id, $domain, $society['society_legal_name'], $society['society_logo']);
+            }
+            
             echo json_encode([
                 'status' => 'success', 
                 'message' => 'Verification Successful! Your society portal is now active.',
+                'sync_status' => $sync_result['status'],
+                'init_status' => $init_result['status'],
                 'target' => $found_value
             ]);
         } else {

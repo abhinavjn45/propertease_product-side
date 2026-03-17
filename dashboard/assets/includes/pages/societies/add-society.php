@@ -518,7 +518,8 @@
                             text: data.message,
                             confirmButtonColor: '#2D31FA'
                         }).then(() => {
-                            window.location.reload();
+                            // Redirect to All Societies
+                            window.location.href = window.siteUrl + 'dashboard?type=societies&page=manage-societies';
                         });
                     } else {
                         Swal.fire({

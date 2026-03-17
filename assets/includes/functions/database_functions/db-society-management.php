@@ -76,7 +76,8 @@ function register_society($data, $files = []) {
     // Handle Logo Upload
     $logo_path = '';
     if (isset($files['societyLogo']) && $files['societyLogo']['error'] === UPLOAD_ERR_OK) {
-        $upload_dir = '../../../assets/uploads/society_logos/';
+        // Upload path relative to ajax-add-society.php
+        $upload_dir = '../../../../../user-side/dashboard/assets/images/societies/';
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0777, true);
         }
@@ -86,7 +87,8 @@ function register_society($data, $files = []) {
         $target_file = $upload_dir . $new_filename;
         
         if (move_uploaded_file($files['societyLogo']['tmp_name'], $target_file)) {
-            $logo_path = 'assets/uploads/society_logos/' . $new_filename;
+            // DB path relative to product-side root (for dashboard display)
+            $logo_path = '../user-side/dashboard/assets/images/societies/' . $new_filename;
         }
     }
 
@@ -175,7 +177,11 @@ function get_societies_by_user_id($user_id) {
     global $con;
     $user_id = $con->real_escape_string($user_id);
     
-    $query = "SELECT * FROM societies WHERE society_added_by = '$user_id' ORDER BY society_id DESC";
+    $query = "SELECT s.*, o.logo as site_logo 
+              FROM societies s 
+              LEFT JOIN society_site_options o ON s.society_unique_id = o.society_unique_id 
+              WHERE s.society_added_by = '$user_id' 
+              ORDER BY s.society_id DESC";
     $result = $con->query($query);
     
     $societies = [];
@@ -186,6 +192,26 @@ function get_societies_by_user_id($user_id) {
     }
     
     return $societies;
+}
+
+/**
+ * Fetches a single society by its unique ID
+ * 
+ * @param string $unique_id Unique ID of the society
+ * @return array|null Society data or null if not found
+ */
+function get_society_by_unique_id($unique_id) {
+    global $con;
+    $unique_id = $con->real_escape_string($unique_id);
+    
+    $query = "SELECT * FROM societies WHERE society_unique_id = '$unique_id' LIMIT 1";
+    $result = $con->query($query);
+    
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc();
+    }
+    
+    return null;
 }
 /**
  * Activates a society and updates its verified domain
@@ -240,5 +266,161 @@ function is_domain_in_use($domain, $exclude_id) {
     $result = $con->query($query);
     
     return ($result && $result->num_rows > 0);
+}
+
+/**
+ * Syncs the logged-in user to the office_members table as an admin for a specific society.
+ * 
+ * @param string $society_id Unique ID of the society
+ * @param string $user_id Unique ID of the logged-in user
+ * @return array Status and message
+ */
+function sync_society_admin_to_office_members($society_id, $user_id) {
+    global $con;
+    $society_id = $con->real_escape_string($society_id);
+    $user_id = $con->real_escape_string($user_id);
+
+    // 1. Fetch user details from users table
+    $query = "SELECT * FROM users WHERE user_unique_id = '$user_id' LIMIT 1";
+    $result = $con->query($query);
+    if (!$result || $result->num_rows === 0) {
+        return ['status' => 'error', 'message' => 'User not found for synchronization.'];
+    }
+    $user = $result->fetch_assoc();
+
+    // 2. Check if already exists in office_members for this society (to avoid duplicates)
+    $email = $con->real_escape_string($user['user_email']);
+    $check_query = "SELECT office_member_id FROM office_members WHERE society_unique_id = '$society_id' AND office_member_email = '$email' LIMIT 1";
+    $check_res = $con->query($check_query);
+    if ($check_res && $check_res->num_rows > 0) {
+        return ['status' => 'success', 'message' => 'User already exists as office member.'];
+    }
+
+    // 3. Prepare data for insertion
+    $member_unique_id = "OMBR_" . time() . "_" . rand(1000, 9999);
+    $fullname = $con->real_escape_string($user['user_fullname']);
+    $password = $con->real_escape_string($user['user_password']);
+    $phone = $con->real_escape_string($user['user_phone_number']);
+    $role = 'admin'; // Always admin for the creator
+    $status = 'active';
+
+    // 4. Insert into office_members
+    $insert_query = "INSERT INTO office_members (
+        society_unique_id, 
+        office_member_unique_id, 
+        office_member_fullname, 
+        office_member_email, 
+        office_member_password, 
+        office_member_phone_number, 
+        office_member_role, 
+        office_member_status,
+        office_member_added_by
+    ) VALUES (
+        '$society_id', 
+        '$member_unique_id', 
+        '$fullname', 
+        '$email', 
+        '$password', 
+        '$phone', 
+        '$role', 
+        '$status',
+        '$user_id'
+    )";
+
+    if ($con->query($insert_query)) {
+        return ['status' => 'success', 'message' => 'Office member synchronized successfully.'];
+    } else {
+        return ['status' => 'error', 'message' => 'Sync database error: ' . $con->error];
+    }
+}
+
+/**
+ * Initializes the society_site_options table with default values for a new society.
+ * 
+ * @param string $society_id Unique ID of the society
+ * @param string $domain The verified domain of the society
+ * @param string $legal_name The legal name of the society
+ * @param string $society_logo The registration logo path
+ * @return array Status and message
+ */
+function initialize_society_site_options($society_id, $domain, $legal_name, $society_logo = '') {
+    global $con;
+    $society_id = $con->real_escape_string($society_id);
+    $domain = $con->real_escape_string($domain);
+    $legal_name = $con->real_escape_string($legal_name);
+    $logo = $con->real_escape_string($society_logo);
+
+    // 1. Check if options already exist (to avoid duplicates)
+    $check_query = "SELECT society_site_option_id FROM society_site_options WHERE society_unique_id = '$society_id' LIMIT 1";
+    $check_res = $con->query($check_query);
+    if ($check_res && $check_res->num_rows > 0) {
+        return ['status' => 'success', 'message' => 'Site options already initialized.'];
+    }
+
+    // 2. Fetch global defaults from site_options table
+    // Required: footer_text, footer_right_text, webmail_host, webmail_username, webmail_auth, webmail_port
+    $options_to_fetch = [
+        'footer_text', 'footer_right_text', 
+        'webmail_host', 'webmail_username', 'webmail_auth', 'webmail_port'
+    ];
+    
+    $defaults = [];
+    foreach ($options_to_fetch as $opt) {
+        $res = $con->query("SELECT option_value FROM site_options WHERE option_key = '$opt' LIMIT 1");
+        if ($res && $res->num_rows > 0) {
+            $row = $res->fetch_assoc();
+            $defaults[$opt] = $con->real_escape_string($row['option_value']);
+        } else {
+            $defaults[$opt] = ''; 
+        }
+    }
+
+    // 3. Prepare site-specific values
+    $site_url = "https://" . $domain . "/";
+    $dashboard_url = $site_url . "dashboard/";
+    $timezone = 'Asia/Kolkata';
+    $maintenance_mode = 'off';
+    $can_send_mail = 'on';
+
+    // 4. Insert into society_site_options
+    $insert_query = "INSERT INTO society_site_options (
+        society_unique_id, 
+        site_title,
+        site_fullname, 
+        site_url, 
+        dashboard_url, 
+        timezone, 
+        maintenance_mode, 
+        logo,
+        footer_text, 
+        footer_right_text, 
+        webmail_host, 
+        webmail_username, 
+        webmail_auth, 
+        webmail_port, 
+        can_send_mail
+    ) VALUES (
+        '$society_id', 
+        '$legal_name',
+        '$legal_name', 
+        '$site_url', 
+        '$dashboard_url', 
+        '$timezone', 
+        '$maintenance_mode', 
+        '$logo',
+        '{$defaults['footer_text']}', 
+        '{$defaults['footer_right_text']}', 
+        '{$defaults['webmail_host']}', 
+        '{$defaults['webmail_username']}', 
+        '{$defaults['webmail_auth']}', 
+        '{$defaults['webmail_port']}', 
+        '$can_send_mail'
+    )";
+
+    if ($con->query($insert_query)) {
+        return ['status' => 'success', 'message' => 'Society site options initialized successfully.'];
+    } else {
+        return ['status' => 'error', 'message' => 'Options init database error: ' . $con->error];
+    }
 }
 ?>

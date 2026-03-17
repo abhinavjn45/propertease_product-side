@@ -75,7 +75,6 @@
 
                     const rows = data.data.map((society, index) => {
                         const serialNumber = index + 1;
-                        const logoUrl = society.society_logo ? (window.siteUrl + society.society_logo) : 'assets/images/default-society.png';
 
                         // Detailed Address Formatting
                         const addressParts = [
@@ -106,7 +105,7 @@
                         if (society.society_status === 'pending_verification') {
                             actionsHtml = `<a href="<?= $dashboard_url ?>?type=societies&page=finish-verification&society_id=${society.society_unique_id}" class="btn btn-sm btn-primary-600 rounded-pill">Finish Verification</a>`;
                         } else if (society.society_status === 'pending_setup') {
-                            const setupUrl = society.society_domain ? `https://${society.society_domain}/admin` : '#';
+                            const setupUrl = society.society_domain ? `https://${society.society_domain}/dashboard` : '#';
                             actionsHtml = `<a href="${setupUrl}" target="_blank" class="btn btn-sm btn-success-600 rounded-pill">Complete Setup</a>`;
                         } else {
                             actionsHtml = `
@@ -126,13 +125,12 @@
                             serialNumber,
                             `<a href="javascript:void(0)" class="text-primary-600">${society.society_unique_id}</a>`,
                             `<div class="d-flex align-items-center">
-                                <img src="${logoUrl}" alt="" class="flex-shrink-0 me-12 radius-8" style="width: 40px; height: 40px; object-fit: cover;">
                                 <h6 class="text-md mb-0 fw-medium flex-grow-1">
                                     <div class="text-clamp-2" title="${society.society_legal_name}">${society.society_legal_name}</div>
                                 </h6>
                             </div>`,
                             `<div class="text-clamp-2" title="${address}">${address}</div>`,
-                            `<div class="text-clamp-2" title="${domain}">${domain}</div>`,
+                            `<div class="text-clamp-2" title="${domain}"><a href="https://${domain}" target="_blank">${domain}</a></div>`,
                             `<span class="${statusClass} px-24 py-4 rounded-pill fw-medium text-sm">${displayStatus}</span>`,
                             actionsHtml
                         ];

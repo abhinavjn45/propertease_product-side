@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+﻿<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
 <h6 class="fw-semibold mb-0">Dashboard</h6>
 <ul class="d-flex align-items-center gap-2">
 <li class="fw-medium">
@@ -71,13 +71,13 @@
                     </span>
                     <div>
                     <span class="mb-2 fw-medium text-secondary-light text-sm">Total Sales</span>
-                    <h6 class="fw-semibold">$5,00,000</h6>
+                    <h6 class="fw-semibold">₹5,00,000</h6>
                     </div>
                 </div>
                 
                 <div id="total-sales-chart" class="remove-tooltip-title rounded-tooltip-value"></div>
             </div>
-            <p class="text-sm mb-0">Increase by  <span class="bg-danger-focus px-1 rounded-2 fw-medium text-danger-main text-sm">-$10k</span> this week</p>
+            <p class="text-sm mb-0">Increase by  <span class="bg-danger-focus px-1 rounded-2 fw-medium text-danger-main text-sm">-₹10k</span> this week</p>
             </div>
         </div>
         </div>
@@ -137,13 +137,13 @@
                     </span>
                     <div>
                     <span class="mb-2 fw-medium text-secondary-light text-sm">Total Profit</span>
-                    <h6 class="fw-semibold">$3,00,700</h6>
+                    <h6 class="fw-semibold">₹3,00,700</h6>
                     </div>
                 </div>
                 
                 <div id="total-profit-chart" class="remove-tooltip-title rounded-tooltip-value"></div>
             </div>
-            <p class="text-sm mb-0">Increase by  <span class="bg-success-focus px-1 rounded-2 fw-medium text-success-main text-sm">+$15k</span> this week</p>
+            <p class="text-sm mb-0">Increase by  <span class="bg-success-focus px-1 rounded-2 fw-medium text-success-main text-sm">+₹15k</span> this week</p>
             </div>
         </div>
         </div>
@@ -160,8 +160,8 @@
             <span class="text-sm fw-medium text-secondary-light">Weekly Report</span>
             </div>
             <div class="text-end">
-            <h6 class="mb-2 fw-bold text-lg">$50,000.00</h6>
-            <span class="bg-success-focus ps-12 pe-12 pt-2 pb-2 rounded-2 fw-medium text-success-main text-sm">$10k</span>
+            <h6 class="mb-2 fw-bold text-lg">₹50,000.00</h6>
+            <span class="bg-success-focus ps-12 pe-12 pt-2 pb-2 rounded-2 fw-medium text-success-main text-sm">₹10k</span>
             </div>
         </div>
         <div id="revenue-chart" class="mt-28"></div>
@@ -197,7 +197,7 @@
             </span>
             <div>
                 <span class="text-secondary-light text-sm fw-medium">Sales</span>
-                <h6 class="text-md fw-semibold mb-0">$200k</h6>
+                <h6 class="text-md fw-semibold mb-0">₹200k</h6>
             </div>
             </div>
 
@@ -207,7 +207,7 @@
             </span>
             <div>
                 <span class="text-secondary-light text-sm fw-medium">Income</span>
-                <h6 class="text-md fw-semibold mb-0">$200k</h6>
+                <h6 class="text-md fw-semibold mb-0">₹200k</h6>
             </div>
             </div>
 
@@ -217,7 +217,7 @@
             </span>
             <div>
                 <span class="text-secondary-light text-sm fw-medium">Profit</span>
-                <h6 class="text-md fw-semibold mb-0">$200k</h6>
+                <h6 class="text-md fw-semibold mb-0">₹200k</h6>
             </div>
             </div>
         </div>
@@ -893,31 +893,31 @@
                 <td>5986124445445</td>
                 <td>27 Mar 2024</td>
                 <td> <span class="bg-warning-focus text-warning-main px-24 py-4 rounded-pill fw-medium text-sm">Pending</span> </td>
-                <td>$20,000.00</td>
+                <td>₹20,000.00</td>
                 </tr>
                 <tr>
                 <td>5986124445445</td>
                 <td>27 Mar 2024</td>
                 <td> <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Rejected</span> </td>
-                <td>$20,000.00</td>
+                <td>₹20,000.00</td>
                 </tr>
                 <tr>
                 <td>5986124445445</td>
                 <td>27 Mar 2024</td>
                 <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Completed</span> </td>
-                <td>$20,000.00</td>
+                <td>₹20,000.00</td>
                 </tr>
                 <tr>
                 <td>5986124445445</td>
                 <td>27 Mar 2024</td>
                 <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Completed</span> </td>
-                <td>$20,000.00</td>
+                <td>₹20,000.00</td>
                 </tr>
                 <tr>
                 <td>5986124445445</td>
                 <td>27 Mar 2024</td>
                 <td> <span class="bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm">Completed</span> </td>
-                <td>$20,000.00</td>
+                <td>₹20,000.00</td>
                 </tr>
             </tbody>
             </table>
