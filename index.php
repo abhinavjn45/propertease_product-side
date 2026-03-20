@@ -606,7 +606,7 @@ require_once('./assets/includes/functions/utility/element_fetcher.php');
                                             professional transparency we never thought possible."
                                         </p>
                                         <div class="gt-info">
-                                            <img src="assets/img/home-3/client.png" alt="RWA Secretary">
+
                                             <span><b>Rajesh Malhotra,</b> General Secretary, Silver Arch Enclave</span>
                                         </div>
                                     </div>
@@ -914,7 +914,7 @@ require_once('./assets/includes/functions/utility/element_fetcher.php');
                         <div class="col-xl-5">
                             <div class="gt-flag-box left_view wow fadeInLeft">
                                 <div class="info-content">
-                                    <img src="assets/img/home-3/flag/client-info.png" alt="img">
+
                                     <p>
                                         500+ Societies <br>
                                         Digitized in India
@@ -1200,4 +1200,5 @@ require_once('./assets/includes/functions/utility/element_fetcher.php');
     <script src="<?= get_site_option('site_url') . 'assets/js/lib/dataTables.min.js' ?>"></script>
 
 </body>
+
 </html>
